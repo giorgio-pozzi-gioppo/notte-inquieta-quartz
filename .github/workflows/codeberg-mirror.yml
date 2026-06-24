@@ -3,7 +3,7 @@ name: Mirror to Codeberg
 on:
   push:
     branches:
-      - main
+      - v4
   workflow_dispatch:
 
 jobs:
