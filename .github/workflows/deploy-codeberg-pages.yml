@@ -30,6 +30,16 @@ jobs:
 
       - name: Build Quartz
         run: npx quartz build
+        
+      - name: Add extensionless URL support
+        run: |
+          find public -type f -name "*.html" ! -name "index.html" | while read file; do
+            target="${file%.html}"
+            if [ ! -e "$target" ]; then
+              mkdir -p "$target"
+              cp "$file" "$target/index.html"
+            fi
+          done
 
       - name: Deploy to Codeberg Pages branch
         env:
